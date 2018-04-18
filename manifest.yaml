@@ -165,7 +165,7 @@ application:
         - "/bin/systemctl restart supervisord.service"
         - "/bin/systemctl enable haproxy.service"
         - "/bin/systemctl enable supervisord.service"  
-        - "/bin/sed -i '/\<network.target\>/ s/$/ network.service supervisord.service/' /usr/lib/systemd/system/haproxy.service"
+        - "/bin/sed -i '/\\<network.target\\>/ s/$/ network.service supervisord.service/' /usr/lib/systemd/system/haproxy.service"
 
       
   - id: configureHAProxy2
@@ -186,7 +186,7 @@ application:
         - "/bin/systemctl restart supervisord.service"
         - "/bin/systemctl enable haproxy.service"
         - "/bin/systemctl enable supervisord.service"
-        - "/bin/sed -i '/\<network.target\>/ s/$/ network.service supervisord.service/' /usr/lib/systemd/system/haproxy.service"
+        - "/bin/sed -i '/\\<network.target\\>/ s/$/ network.service supervisord.service/' /usr/lib/systemd/system/haproxy.service"
 
   success:
     text: |
