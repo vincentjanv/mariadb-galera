@@ -163,6 +163,11 @@ application:
         - "/bin/systemctl daemon-reload"
         - "/bin/systemctl restart haproxy.service"
         - "/bin/systemctl restart supervisord.service"
+        - "/bin/systemctl enable haproxy.service"
+        - "/bin/systemctl enable supervisord.service"  
+        - "/bin/sed -i '/\<network.target\>/ s/$/ network.service supervisord.service/' /usr/lib/systemd/system/haproxy.service"
+
+      
   - id: configureHAProxy2
     onCall:
     - executeShellCommands:
@@ -179,6 +184,10 @@ application:
         - "/bin/systemctl daemon-reload"
         - "/bin/systemctl restart haproxy.service"
         - "/bin/systemctl restart supervisord.service"
+        - "/bin/systemctl enable haproxy.service"
+        - "/bin/systemctl enable supervisord.service"
+        - "/bin/sed -i '/\<network.target\>/ s/$/ network.service supervisord.service/' /usr/lib/systemd/system/haproxy.service"
+
   success:
     text: |
       Your MariaDB Galera Cluster has been deployed.
